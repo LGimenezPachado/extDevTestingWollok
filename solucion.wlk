@@ -1,3 +1,6 @@
+/*
+----------------GUITARRA FENDER STRATOCASTER----------------------
+*/
 object fenderStratoCaster{
   var color = "negro"
 
@@ -5,29 +8,25 @@ object fenderStratoCaster{
   
   method afinado() = true
 
-  method costo() { 
-    if(color != "negro")
-      return 10
-    else
-      return 15
-  }
+  method costo() = if(color != "negro") 10 else 15
 
   method nuevoColor(nuevoColor){
     color = nuevoColor
   }
 
 }
-
+/*
+----------------TROMPETA JUPITER----------------------
+*/
 object trompetaJupiter{
   var temperatura = 20
   var conSordina = true
 
   method afinado() = 20 <= temperatura and temperatura <=25 
   
-method cambiarTemperatura(temperaturaAgregada) {
+  method cambiarTemperatura(temperaturaAgregada) {
     temperatura += temperaturaAgregada
   }
-
 
   method sacarSordina(){
     conSordina = false
@@ -42,7 +41,9 @@ method cambiarTemperatura(temperaturaAgregada) {
   method esValioso() = false
 
 }
-
+/*
+----------------PIANO BECHSTEIN----------------------
+*/
 object pianoBechstein {
   var largoHabitacion = 5
   var anchoHabitacion = 5
@@ -58,7 +59,9 @@ object pianoBechstein {
     largoHabitacion = largo
   }
 }
-
+/*
+----------------VIOLIN STAGG----------------------
+*/
 object violinStagg {
   var tremolos = 0
   var pintura = "laca acrílica"
@@ -77,7 +80,9 @@ object violinStagg {
 
   method esValioso() = pintura == "laca acrílica"
 }
-
+/*
+----------------MUSICO JOHANN----------------------
+*/
 object johann {
   var instrumento = trompetaJupiter
 
@@ -87,11 +92,15 @@ object johann {
     instrumento = nuevoInstrumento
   }
 }
-
+/*
+----------------MUSICO WOLFGANG----------------------
+*/
 object wolfgang {
   method esFeliz() = johann.esFeliz()
 }
-
+/*
+----------------MUSICO ANTONIO----------------------
+*/
 object antonio {
   var instrumento = pianoBechstein
 
@@ -101,7 +110,9 @@ object antonio {
     instrumento = nuevoInstrumento
   }
 }
-
+/*
+----------------MUSICO GIUSEPPE----------------------
+*/
 object giuseppe {
   var instrumento = fenderStratoCaster
   
@@ -111,7 +122,9 @@ object giuseppe {
     instrumento = nuevoInstrumento
   }
 }
-
+/*
+----------------MUSICO MADDALENA----------------------
+*/
 object maddalena {
   var instrumento = violinStagg 
 
@@ -121,7 +134,9 @@ object maddalena {
     instrumento = nuevoInstrumento
   }
 }
-
+/*
+----------------ASOCIACION MUSICAL----------------------
+*/
 object asociacionMusical {
   const musicos = []
 
