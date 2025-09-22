@@ -24,9 +24,10 @@ object trompetaJupiter{
 
   method afinado() = 20 <= temperatura and temperatura <=25 
   
-  method cambiarTemperatura(temperaturaAgregada) {
+method cambiarTemperatura(temperaturaAgregada) {
     temperatura += temperaturaAgregada
   }
+
 
   method sacarSordina(){
     conSordina = false
@@ -101,7 +102,7 @@ object antonio {
   }
 }
 
-object giusseppe {
+object giuseppe {
   var instrumento = fenderStratoCaster
   
   method esFeliz() = instrumento.afinado()
@@ -128,14 +129,4 @@ object asociacionMusical {
 
   method agregarMusicos(nuevosMusicos) = musicos.addAll(nuevosMusicos)
 
-}
-
-object pepita {
-  var energy = 100
-
-  method energy() = energy
-
-  method fly(minutes) {
-    energy = energy - minutes * 3
-  }
 }

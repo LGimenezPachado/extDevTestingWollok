@@ -1,0 +1,165 @@
+import solucion.*
+
+//test femder
+test "Fender está afinada" {
+    assert.that(fenderStratoCaster.afinado())
+}
+
+test "El costo de una Fender negra es 15" {
+    assert.equals(15, fenderStratoCaster.costo())
+}
+
+test "el costo de una Fender roja es 10"{
+    fenderStratoCaster.nuevoColor("rojo")
+    assert.equals(10, fenderStratoCaster.costo())
+}
+
+test "una Fender es valiosa" {
+    assert.that(fenderStratoCaster.esValioso())
+}
+
+//test trompeta
+test "Una trompeta Júpiter a una temperatura ambiente de 20 grados está afinada"{
+    assert.that(trompetaJupiter.afinado())
+}
+
+test "Una trompeta Júpiter a una temperatura ambiente de 25 grados está afinada"{
+    trompetaJupiter.cambiarTemperatura(5)
+    assert.that(trompetaJupiter.afinado())
+}
+
+test "Una trompeta Júpiter a una temperatura ambiente de 19 grados no está afinada" {
+    trompetaJupiter.cambiarTemperatura(-1)
+    assert.notThat(trompetaJupiter.afinado())
+}
+
+test "Una trompeta Júpiter a una temperatura ambiente de 26 grados no está afinada"{
+    trompetaJupiter.cambiarTemperatura(6)
+    assert.notThat(trompetaJupiter.afinado())
+}
+
+test "Una trompeta Júpiter a una temperatura ambiente de 19 grados, si la afinamos, pasa a estar afinada" {
+    trompetaJupiter.cambiarTemperatura(-1)
+    trompetaJupiter.afinado()
+    assert.that(trompetaJupiter.afinado())
+}
+
+test "La trompeta cuesta sin sordina 30 chelines"{
+    trompetaJupiter.sacarSordina()
+    assert.equals(30, trompetaJupiter.costo())
+}
+
+test "La trompeta cuesta con sordina 35 chelines"{
+    assert.equals(35, trompetaJupiter.costo())
+}
+
+test "La trompeta no es valiosa" {
+    assert.that(trompetaJupiter.esValioso())
+}
+
+//test piano
+
+test "El piano en una habitación de 5x5 está afinado" {
+    assert.that(pianoBechstein.afinado())
+}
+
+test "El piano en una habitación chica (de 20 metros cuadrados) no está afinado" {
+    pianoBechstein.nuevaHabitacion(4.5, 4.5)
+    assert.notThat(pianoBechstein.afinado())
+}
+
+test "El costo del piano en la habitación de 5x5 es de 10"{
+    assert.equals(10, pianoBechstein.costo())
+}
+
+test "El piano es valioso en la habitación inicial de 5x5" {
+    assert.that(pianoBechstein.esValioso())
+}
+
+test "El piano movido a una habitación chica (de 20 metros cuadrados) no es valioso" {
+    pianoBechstein.nuevaHabitacion(4.5, 4.5)
+    assert.notThat(pianoBechstein.esValioso()) 
+}
+
+//test violin
+
+test "El violín Stagg comienza afinado (0 trémolos)" {
+    assert.that(violinStagg.afinado())
+}
+
+test "El violín con 9 trémolos todavía está afinado" {
+    violinStagg.hacerTremolos(9)
+    assert.that(violinStagg.afinado())
+}
+
+test "El violín luego de 10 trémolos exactos, queda desafinado" {
+    violinStagg.hacerTremolos(10)
+    assert.notThat(violinStagg.afinado())
+}
+
+test "El violín tiene un costo inicial de 20 chelines (sin trémolos)" {
+    assert.equals(20, violinStagg.costo())
+}
+
+test "Con exactamente 2 trémolos, el violín tiene un costo de 18 chelines" {
+    violinStagg.hacerTremolos(2)
+    assert.equals(18, violinStagg.costo())
+}
+
+test "Con 10 trémolos, el violín tiene un costo de 15 chelines (nunca baja de 15)" {
+    violinStagg.hacerTremolos(10)
+    assert.equals(15, violinStagg.costo())
+}
+
+test "Pintado con “laca acrílica”, el violín es valioso" {
+    assert.that(violinStagg.esValioso())
+}
+
+test "Pintado con “látex satinado”, el violín no es valioso" {
+    violinStagg.cambiarPimtura("látex satinado")
+    assert.notThat(violinStagg.esValioso())
+}
+
+test "Johann es feliz con una trompeta Jupiter (que es cara)" {
+    assert.that(johann.esFeliz())
+}
+
+test "Johann no es feliz con un violín Stagg (sin trémolos, que no es caro)" {
+    johann.cambiarInstrumento(violinStagg)
+    assert.notThat(johann.esFeliz())
+}
+
+test "Wolfgang es feliz si Johann tiene una trompeta Jupiter" {    
+    assert.that(wolfgang.esFeliz())
+}
+
+test "Wolfgang no es feliz si Johann tiene un violín Stagg (sin trémolos)" {
+    johann.cambiarInstrumento(violinStagg)
+    assert.notThat(wolfgang.esFeliz())
+}
+
+test "Giuseppe es feliz con una guitarra Fender (que está siempre afinada)" {
+    assert.that(giuseppe.esFeliz())
+}
+
+test "Giuseppe no es feliz con un piano Bechstein en una habitación de un metro cuadrado" {
+    giuseppe.cambiarInstrumento(pianoBechstein)
+    pianoBechstein.nuevaHabitacion(1, 1)
+    assert.notThat(giuseppe.esFeliz())
+}
+
+test "Maddalena con el violín Stagg sin trémolos es feliz (costo 20, es par)" {
+    assert.that(maddalena.esFeliz())
+}
+
+test "Maddalena con el violín Stagg con un trémolo no es feliz (costo 19, es impar)" {
+    violinStagg.hacerTremolos(1)
+    assert.notThat(maddalena.esFeliz())
+}
+
+test "Si tenemos una asociación donde están Johann con un violín Stagg, Wolfgang, Giuseppe con su guitarra Fender original y Maddalena con su violín Stagg original, los músicos felices deben ser Giuseppe y Maddalena" {
+    johann.cambiarInstrumento(violinStagg)
+    asociacionMusical.agregarMusicos([johann, wolfgang, giuseppe, maddalena])
+    assert.that(giuseppe.esFeliz())
+    assert.that(maddalena.esFeliz())
+}
