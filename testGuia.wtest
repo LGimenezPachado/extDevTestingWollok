@@ -1,0 +1,33 @@
+import guiaEjercicios.*
+
+describe "test para Pepita"{
+    test "Vuelo de pepita" {
+    pepita.volar()
+    assert.equals(80, pepita.energia())
+}
+test "Comida de pepita" {
+    pepita.comer()
+    assert.equals(104, pepita.energia())
+}
+
+test "pruebas" {
+}
+}
+
+
+
+describe "test para Tom" {
+    test "Comida de tom" {
+        tom.comer()
+        assert.equals(22 ,tom.energiaTom())
+    }
+
+    test "Velocidad de Tom" {
+        tom.correr ()
+        assert.equals()
+    }
+
+}
+
+
+
