@@ -23,7 +23,7 @@ object pepita {
 var energia = 100
 const km = 10
 const gr = 1
-var lugarActual = 'coghlan'
+const lugarActual = 'coghlan'
 
 //getters
 method energia() = energia
@@ -57,7 +57,8 @@ object tom {
     var velocidadTom = 5
 
     method energiaTom() = energiaTom
-    method velocidadTom() = velocidadTom
+    method velocidadTom() =   5+(energiaTom/10)
+
 
     method comer (){
         const pesoRaton = 10
@@ -65,8 +66,39 @@ object tom {
         velocidadTom += energiaTom
     }
 
-    method correr() {
+    method correr(segundos) {
         const metros = 10
-        energiaTom -= metros
+        energiaTom = metros 
+        const velocidadInicial = self.velocidadTom()   // velocidad antes de correr
+        const distancia = velocidadInicial * segundos
+        const consumo = 0.5 * distancia
+
+        energiaTom -= consumo
     }
 }
+
+//////////////////////////////////////////////////////////////////////////////
+
+object pepe {
+    var netoGeneral = 1000
+    var netoCadete = 1500
+    var presentismo
+
+
+
+}
+
+object categoria {
+  
+}
+
+object bonoPresentismo {
+
+}
+
+object bonoResultados {
+    
+}
+
+//////////////////////////////////////////////////////////////////////////////
+

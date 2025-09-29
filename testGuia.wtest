@@ -9,9 +9,6 @@ test "Comida de pepita" {
     pepita.comer()
     assert.equals(104, pepita.energia())
 }
-
-test "pruebas" {
-}
 }
 
 
@@ -23,10 +20,9 @@ describe "test para Tom" {
     }
 
     test "Velocidad de Tom" {
-        tom.correr ()
-        assert.equals()
+        tom.correr (4)
+        assert.equals(70,tom.energiaTom())
     }
-
 }
 
 
