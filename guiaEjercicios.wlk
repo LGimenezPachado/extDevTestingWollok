@@ -79,26 +79,56 @@ object tom {
 
 //////////////////////////////////////////////////////////////////////////////
 
+// === Categorías ===
+object gerente {
+    method neto() = 1000
+}
+
+object cadete {
+    method neto() = 1500
+}
+
+// === Bonos por Presentismo ===
+object bonoPresentismoNormal {
+    method calcular(ausentismo) {
+        if(ausentismo == 0) return 100
+        if(ausentismo == 1) return 50
+        return 0
+    }
+}
+
+object bonoPresentismoNulo {
+    method calcular(ausentismo) = 0
+}
+
+// === Bonos por Resultados ===
+object bonoResultadosPorcentajeNeto {
+    method calcular(neto) = neto * 0.1
+}
+
+object bonoResultadosMontoFijo {
+    method calcular(neto) = 80
+}
+
+object bonoResultadosNulo {
+    method calcular(neto) = 0
+}
+
+// === Empleado (ejemplo: Pepe) ===
 object pepe {
-    var netoGeneral = 1000
-    var netoCadete = 1500
-    var presentismo
+    property categoria = gerente
+    property ausentismo = 0
+    property bonoPorPresentismo = bonoPresentismoNormal
+    property bonoPorResultados = bonoResultadosPorcentajeNeto
 
-
-
+    method sueldo() {
+        const neto = categoria.neto()
+        return neto +
+            bonoPorPresentismo.calcular(ausentismo) +
+            bonoPorResultados.calcular(neto)
+    }
 }
 
-object categoria {
-  
-}
-
-object bonoPresentismo {
-
-}
-
-object bonoResultados {
-    
-}
 
 //////////////////////////////////////////////////////////////////////////////
 
