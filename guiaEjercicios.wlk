@@ -116,10 +116,10 @@ object bonoResultadosNulo {
 
 // === Empleado (ejemplo: Pepe) ===
 object pepe {
-    property categoria = gerente
-    property ausentismo = 0
-    property bonoPorPresentismo = bonoPresentismoNormal
-    property bonoPorResultados = bonoResultadosPorcentajeNeto
+    var property categoria = gerente
+    var property ausentismo = 0
+    var property bonoPorPresentismo = bonoPresentismoNormal
+    var property bonoPorResultados = bonoResultadosPorcentajeNeto
 
     method sueldo() {
         const neto = categoria.neto()
