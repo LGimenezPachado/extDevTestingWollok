@@ -1,9 +1,10 @@
+// ----------------
 //gestion basica
-
+// ----------------
 class Persona {
-    const nombre = ""
-    var edad = n
-    var direccion = ""
+    const nombre 
+    var edad 
+    var direccion
     
     //GETTERS 
     method nombre() = nombre
@@ -29,7 +30,9 @@ class Estudiante inherits Persona {
     var carrera 
 }
 
+// ----------------
 //figuras geometricas
+// ----------------
 
 class Figura {
     var area
@@ -82,11 +85,11 @@ class Triangulo inherits Figura {
     }
 
     override method calcularArea() {
-        return area = (base*altura)/2
+        area = (base*altura)/2
     }
 
     override method calcularPerimetro() {
-        return perimetro = base + 2*lado    
+         perimetro = base + 2*lado    
     }
 }
 
@@ -112,3 +115,56 @@ class Rectangulo inherits Figura {
 
 }
 
+object demoPoli {
+const circulo = new Circulo (radio = 5, pi = 3.14)
+const triangulo = new Triangulo (base = 3,altura=4,lado=5)
+const rectangulo = new Rectangulo (base = 4, altura = 6)
+
+const misFiguras = [circulo, triangulo, rectangulo]
+}
+
+// ----------------
+//simulacion biblio
+// ----------------
+class Libro {
+    const titulo
+    const ISBN
+    const autor = new Autor(nombre = "Desconocido", nacionalidad = "Desconocida")
+}
+
+class Autor {
+    const nombre
+    const nacionalidad
+}
+
+class Biblioteca {
+    var libros = []
+
+    method agregarLibro(nuevoLibro) {
+        libros = libros + [nuevoLibro]
+    }
+
+    method buscarLibro(libroBuscado) {
+        libros.filter(l => l.ISBN == libroBuscado.ISBN)
+
+    }
+}
+
+// ----------------
+//sistema de cuentas bancarias
+// ----------------
+class CuentaBancaria {
+    var saldo = 0
+
+    method depositar(monto) {
+        saldo = saldo + monto
+    }
+
+    method depositar (monto, descripcion){
+        //saldo = saldo + monto
+    }
+
+    method retirar(monto) {
+
+    }
+}

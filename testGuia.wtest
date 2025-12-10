@@ -27,19 +27,19 @@ describe "test para Tom" {
 
 describe "test de sueldos" {
     test "pepe gerente sin faltas con porcentaje sobre neto" {
-    pepe.categoria = gerente
-    pepe.ausentismo = 0
-    pepe.bonoPorPresentismo = bonoPresentismoNormal
-    pepe.bonoPorResultados = bonoResultadosPorcentajeNeto
+    pepe.categoria(gerente)
+    pepe.ausentismo(0)
+    pepe.bonoPorPresentismo(bonoPresentismoNormal)
+    pepe.bonoPorResultados(bonoResultadosPorcentajeNeto)
     
     assert.equals(1000 + 100 + 100, pepe.sueldo()) // 1200
 }
 
 test "pepe cadete con 2 faltas y bono fijo" {
-    pepe.categoria = cadete
-    pepe.ausentismo = 2
-    pepe.bonoPorPresentismo = bonoPresentismoNormal
-    pepe.bonoPorResultados = bonoResultadosMontoFijo
+    pepe.categoria(cadete)
+    pepe.ausentismo(2)
+    pepe.bonoPorPresentismo(bonoPresentismoNormal)
+    pepe.bonoPorResultados(bonoResultadosMontoFijo)
     
     assert.equals(1500 + 0 + 80, pepe.sueldo()) // 1580
 }
