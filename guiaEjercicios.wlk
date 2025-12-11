@@ -1,3 +1,5 @@
+//Ctrl+K+C
+
 /*
 Ejercicio 1 - Pepita básica
 
@@ -217,6 +219,128 @@ class IPhone inherits Celular{
 
 }
 
-
-
 //////////////////////////////////////////////////////////////////////////////
+
+/*
+Ejercicio 5 - Mudanzas
+Describa qué comportamiento espera una empresa de mudanzas de un objeto que representa una silla y otro que representa un televisor; o sea qué mensajes les podría enviar y qué respuestas serían razonables. ¿Hay comportamiento en común? ¿Hay interfaz en común? Por ejemplo, de ambos me va a interesar el peso.
+¿Qué otros objetos que maneja la empresa de mudanzas podría interactuar con sillas y televisores? Por ejemplo, camión ... el resto piénselo uds.. Pensar qué mensajes le enviarían estos objetos a sillas y televisores.
+Implementar con Wollok dos sillas y tres televisores, un camión, y alguna interacción entre los mismos, en particular, el control del peso máximo que puede transportar un camión. Se puede suponer que un camión puede llevar como máximo 3 cosas.
+Realice un diagrama donde los objetos anteriores se interrelacionen.
+Indique otros observadores que podrían interactuar con sillas y televisores, y qué comportamiento esperan.
+*/
+
+class SillaMudanza {
+    const peso = 5
+    method peso() = peso
+}
+
+class TelevisorMudanza {
+    const peso = 15
+    method peso() = peso
+}
+
+object camion {
+    const capacidadMaxima = 3
+    const cargaActual = []
+
+    method cargar(objeto) {
+        if(cargaActual.size() < capacidadMaxima) {
+            cargaActual.add(objeto)
+        }
+    }
+
+    method pesoTotal() {
+        return cargaActual.sum({objeto => objeto.peso()})
+    }
+
+    method cantidadObjetos() = cargaActual.size()
+}
+
+/*
+Ejercicio 6 - Mueblería
+Relacione sillas, mesas y televisores según la visión de un vendedor de una tienda de hogar, respecto del acto de venderlos más que de los argumentos de venta (precio, hasta cuántas cuotas, etc.).
+Suponer que nos interesa: armar una venta que puede vender un artículo a un cliente, para la venta se pueden establecer condiciones particulares (Por ejemplo, cantidad de cuotas, descuento, fecha de entrega); y también poder reservar un artículo para un cliente.
+¿Qué comportamiento y características de los objetos le son interesantes al vendedor?
+Para definir una venta, además del artículo (mesa o silla) ¿qué objeto/s viene/n bien?
+¿Qué colaboraciones puede encontrar?
+Implementar en Wollok una silla, una mesa, y lo que haga falta para reservarlas y venderlas.
+*/
+
+class Cliente {
+    const nombre 
+    method nombre() = nombre
+}
+
+class Vendedor {
+    const nombre 
+    method nombre() = nombre
+}
+
+class Articulo {
+    const precio = 0
+    var reservadoPara = null
+
+    method precio() = precio
+
+    method reservar(cliente) {
+        if(self.estaReservado()){
+            self.error("El articulo ya esta reservado")
+        }
+            reservadoPara = cliente
+    }
+
+    method liberarReserva() {
+        reservadoPara = null
+    }
+
+    method estaReservado() = reservadoPara != null
+}
+
+class SillaVenta inherits Articulo {
+    const material = "madera"
+    method material() = material
+    }
+
+class MesaVenta inherits Articulo {
+    const cantidadDeSillas = 4
+    method cantidadDeSillas() = cantidadDeSillas
+}
+
+class Venta {
+    const articulo
+    const cliente
+    const vendedor
+    const cantidadDeCuotas 
+    const descuento = 0
+    const fechaDeEntrega
+
+    method precioFinal() = articulo.precio() * (1 - descuento)
+
+    method precioPorCuota() = self.precioFinal() / cantidadDeCuotas
+
+    method articulo() = articulo
+    method vendedor() = vendedor
+    method cliente() = cliente  
+    method cantidadDeCuotas() = cantidadDeCuotas
+    method fechaDeEntrega() = fechaDeEntrega
+}
+
+object sistemaVentas {
+    method realizarVenta(articulo, vendedor, cliente, cantidadCuotas, descuento, fechaEntrega) {
+        if(articulo.estaReservado() && !articulo.estaReservadoPor(cliente)) {
+            self.error("El artículo está reservado para otro cliente")
+        }
+        
+        articulo.liberarReserva()
+        
+        return new Venta(
+            articulo = articulo,
+            vendedor = vendedor,
+            cliente = cliente,
+            cantidadDeCuotas = cantidadCuotas,
+            descuento = descuento,
+            fechaDeEntrega = fechaEntrega
+        )
+    }
+}

@@ -50,26 +50,31 @@ class Figura {
 }
 
 class Circulo inherits Figura {
-    const pi
+    const pi = 3.14159
     var radio
 
+    method radio() = radio
 
     method radio (nuevoRadio) {
         radio = nuevoRadio
     }
 
     override method calcularArea() {
-        area = pi * radio * radio
+        return pi * radio * radio
     }
 
     override method calcularPerimetro() {
-        perimetro = 2 * pi * radio
+        return 2 * pi * radio
     }
 }
 class Triangulo inherits Figura {
     var base
     var altura
     var lado
+
+    method base() = base
+    method altura() = altura
+    method lado() = lado
 
 
     method base(newBase) {
@@ -85,11 +90,11 @@ class Triangulo inherits Figura {
     }
 
     override method calcularArea() {
-        area = (base*altura)/2
+        return (base*altura)/2
     }
 
     override method calcularPerimetro() {
-         perimetro = base + 2*lado    
+         return  base + 2*lado    
     }
 }
 
@@ -97,6 +102,9 @@ class Rectangulo inherits Figura {
     var base
     var altura
 
+    method base() = base
+    method altura() = altura
+    
     method base (newBase) {
         base = newBase
     }
@@ -116,7 +124,7 @@ class Rectangulo inherits Figura {
 }
 
 object demoPoli {
-const circulo = new Circulo (radio = 5, pi = 3.14)
+const circulo = new Circulo (radio = 5)
 const triangulo = new Triangulo (base = 3,altura=4,lado=5)
 const rectangulo = new Rectangulo (base = 4, altura = 6)
 
