@@ -1113,3 +1113,11 @@
 {"level":"info","message":"⌛ Validating ext001.wlk","timeElapsed":108,"timestamp":"2025-12-11T19:56:19.815Z"}
 {"level":"info","message":"⌛ Validating ext001.wlk","timeElapsed":119,"timestamp":"2025-12-11T19:56:20.900Z"}
 {"level":"info","message":"⌛ Validating ext001.wlk","timeElapsed":128,"timestamp":"2025-12-11T19:56:21.422Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":126,"timestamp":"2025-12-11T19:57:22.573Z"}
+{"level":"info","message":"⌛ Validating ext001.wlk","timeElapsed":153,"timestamp":"2025-12-11T19:57:22.728Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":108,"timestamp":"2025-12-11T19:57:25.765Z"}
+{"level":"info","message":"⌛ Validating ext001.wlk","timeElapsed":115,"timestamp":"2025-12-11T19:57:25.881Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":107,"timestamp":"2025-12-11T19:57:45.483Z"}
+{"level":"info","message":"⌛ Validating ext001.wlk","timeElapsed":121,"timestamp":"2025-12-11T19:57:45.605Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":110,"timestamp":"2025-12-11T19:57:47.349Z"}
+{"level":"info","message":"⌛ Validating ext001.wlk","timeElapsed":133,"timestamp":"2025-12-11T19:57:47.482Z"}

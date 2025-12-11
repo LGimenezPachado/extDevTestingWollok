@@ -35,8 +35,6 @@ class Estudiante inherits Persona {
 // ----------------
 
 class Figura {
-    var area
-    var perimetro 
     method calcularArea()
     method calcularPerimetro()
 
